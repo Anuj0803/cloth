@@ -7,6 +7,8 @@ import com.cloth.BF.ServiceRepo.ProductService;
 import com.cloth.BF.Utility.ProductDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
 import javax.sound.sampled.Port;
@@ -19,11 +21,19 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     ProductRepo productRepo;
 
+    @Autowired
+    private JavaMailSender js;
+
 
     @Override
     public ProductDto add(ProductDto productDto) {
         Product product=covert(productDto);
        Product product1= this.productRepo.save(product);
+        SimpleMailMessage simpleMailMessage = new SimpleMailMessage();
+        simpleMailMessage.setTo("bhargavanuj725@gmail.com");
+        simpleMailMessage.setSubject("Product Added");
+        simpleMailMessage.setText("Added Product " + product1.getName());
+        js.send(simpleMailMessage);
        ProductDto productDto1=covertToDto(product1);
        return productDto1;
     }

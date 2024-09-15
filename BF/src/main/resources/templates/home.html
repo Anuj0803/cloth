@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BF</title>
+</head>
+<body>
+   <h1>
+       Add User
+   </h1>
+  <form action="/cloth/add" method="post">
+      <label>Name :</label>
+      <input type="text" name="name"><br>
+      <label>Colour :</label>
+      <input type="text" name="colour"><br>
+      <label >Description :</label>
+      <input type="text" name="description"><br>
+      <label >Brand :</label>
+      <input type="text" name="brand"><br>
+      <label >Quantity :</label>
+      <input type="text" name="quantity"><br>
+      <label >Price :</label>
+      <input type="text" name="price"><br>
+      <button type="submit">Submit</button>
+  </form>
+   <h1>
+       Get All Users
+   </h1>
+   <form action="/cloth/" method="get">
+       <button type="submit">Get All</button>
+   </form>
+
+   <h1>
+       Delete User By ID
+   </h1>
+   <form action="/cloth/{id}" method="delete">
+       <label>ID</label>
+       <input type="number" name="id"><br>
+       <button type="submit">Delete</button>
+   </form>
+
+
+
+
+</body>
+</html>
